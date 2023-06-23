@@ -60,6 +60,24 @@
             </div>
         </nav>
         <main class="container-fluid">
+        <div class="row">
+            {% for place in randomPlaces %}
+            <div class="col">
+                <div class="card" style="width: 10rem;">
+                    <img src="{% if place.name is not null and place.name is defined %}{{place.name}}{% endif %}" class="card-img-top" alt="image de {% if place.name is not null and place.name is defined %}{{place.name}}{% endif %}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{place.name}}</h5>
+                        <p class="card-text">{{place.description}}</p>
+                        <a href="#" class="btn btn-primary">Ici un lien</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+
+        {# <p>{{dump(randomPlaces)}}</p> #}
+
         {% block body %}{% endblock %}
         </main>
     </body>

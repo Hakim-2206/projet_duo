@@ -39,6 +39,19 @@ class PlaceRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+    * @return Place Returns an array of Location objects
+    */
+    public function findRandom(): ?Place
+    {
+        // DQL avec queryBuilder
+        return $this->createQueryBuilder('p')
+        ->orderBy('RAND()')
+        ->setMaxResults(1)
+        ->getQuery()
+        ->getResult();
+    }
+
 //    /**
 //     * @return Place[] Returns an array of Place objects
 //     */
